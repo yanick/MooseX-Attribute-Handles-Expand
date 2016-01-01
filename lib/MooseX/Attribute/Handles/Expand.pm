@@ -1,32 +1,7 @@
 package MooseX::Attribute::Handles::Expand;
+our $AUTHORITY = 'cpan:YANICK';
 # ABSTRACT: Expands '*' in handle functions with the attribute name
-
-=head1 SYNOPSIS
-
-    package Foo;
-    use Moose;
-    use MooseX::Attribute::Handles::Expand;
-
-    has [ qw/ bar baz / ] => (
-        traits => [ 'Array' ],
-        default => sub { [] },
-        handles => {
-            'size_*' => 'count',
-        },
-    );
-
-
-    my $foo = Foo->new;
-    ...;
-    print $foo->size_bar;
-    print $foo->size_baz;
-
-=head1 DESCRIPTION
-
-Grooms the name of delegated methods in the handles and expands all
-instances of C<*> into the attribute name.
-
-=cut
+$MooseX::Attribute::Handles::Expand::VERSION = '0.0.1';
 
 use strict;
 use warnings;
@@ -67,8 +42,9 @@ after install_delegation => sub {
 
 {
     package Moose::Meta::Attribute::Custom::Trait::Handles::Expand;
-
-    sub register_implementation { 'MooseX::Attribute::Handles::Expand' }
+our $AUTHORITY = 'cpan:YANICK';
+$Moose::Meta::Attribute::Custom::Trait::Handles::Expand::VERSION = '0.0.1';
+sub register_implementation { 'MooseX::Attribute::Handles::Expand' }
 
 }
 
@@ -76,3 +52,55 @@ after install_delegation => sub {
 
 
 1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+MooseX::Attribute::Handles::Expand - Expands '*' in handle functions with the attribute name
+
+=head1 VERSION
+
+version 0.0.1
+
+=head1 SYNOPSIS
+
+    package Foo;
+    use Moose;
+    use MooseX::Attribute::Handles::Expand;
+
+    has [ qw/ bar baz / ] => (
+        traits => [ 'Array' ],
+        default => sub { [] },
+        handles => {
+            'size_*' => 'count',
+        },
+    );
+
+
+    my $foo = Foo->new;
+    ...;
+    print $foo->size_bar;
+    print $foo->size_baz;
+
+=head1 DESCRIPTION
+
+Grooms the name of delegated methods in the handles and expands all
+instances of C<*> into the attribute name.
+
+=head1 AUTHOR
+
+Yanick Champoux <yanick@babyl.dyndns.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2016 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

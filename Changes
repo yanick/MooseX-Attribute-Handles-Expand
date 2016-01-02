@@ -4,6 +4,8 @@ Revision history for MooseX-Attribute-Handles-Expand
   [ API CHANGES ]
 
   [ BUG FIXES ]
+  - Test was failing because of the order defaults were initialized.
+        (GH#1, eserte)
 
   [ DOCUMENTATION ]
 

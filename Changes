@@ -4,6 +4,7 @@ Revision history for MooseX-Attribute-Handles-Expand
   [ API CHANGES ]
 
   [ BUG FIXES ]
+  - Set minimal version of List::Util to be 1.29.
 
   [ DOCUMENTATION ]
 

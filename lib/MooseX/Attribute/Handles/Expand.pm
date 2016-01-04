@@ -33,7 +33,7 @@ use warnings;
 
 use Moose::Role;
 
-use List::Util qw/ pairmap /;
+use List::Util 1.29 qw/ pairmap /;
 
 my %switcharoo;
 
